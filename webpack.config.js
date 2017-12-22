@@ -7,6 +7,8 @@ module.exports = {
     'extract-json-from-string.min': require.resolve(`./${package.main}`)
   },
   output: {
+    library: 'extractJson',
+    libraryTarget: 'window',
     path: `${__dirname}/dist`,
     filename: '[name].js'
   },
