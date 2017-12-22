@@ -1,25 +1,37 @@
-var webpack = require('webpack');
-var package = require('package');
+const webpack = require('webpack');
+const package = require('./package');
 
 module.exports = {
-  entry: [
-    require.resolve(package.main)
-  ],
+  entry: {
+    'extract-json-from-string': require.resolve(`./${package.main}`),
+    'extract-json-from-string.min': require.resolve(`./${package.main}`)
+  },
   output: {
-    path: __dirname,
-    publicPath: '/dist/',
-    filename: 'bundle.js'
+    path: `${__dirname}/dist`,
+    filename: '[name].js'
   },
   module: {
-    loaders: [
+    rules: [
       {
         test: /lib.*\.js$/,
-        loader: ['babel'],
         exclude: /node_modules/,
-        query: {
-          presets: ['es2015']
-        }
+        use: [
+          {
+            loader: 'babel-loader',
+            options: {
+              presets: [
+                ['env', { modules: false }]
+              ]
+            }
+          }
+        ]
       }
     ]
-  }
+  },
+  plugins: [
+    new webpack.optimize.UglifyJsPlugin({
+      include: /\.min\.js$/,
+      minimize: true
+    })
+  ]
 };

@@ -6,37 +6,37 @@ module.exports = function(config) {
     // frameworks to use
     // available frameworks: https://npmjs.org/browse/keyword/karma-adapter
     frameworks: ['mocha'],
-    reporters: ['mocha'],
-    browsers: ['Chrome', 'Firefox', 'PhantomJS'],
+    reporters: ['dots'],
+    browsers: ['Chrome', 'PhantomJS'],
     preprocessors: {
-      
       'test/**/*.js': ['webpack']
-      
     },
-
 
     // list of files / patterns to load in the browser
     files: [
-      
       'test/**/*.js'
     ],
 
-    
     webpack: {
       module: {
-        loaders: [
+        rules: [
           {
-            test: /lib.*\.js$/,
-            loader: ['babel'],
+            test: /\.js$/,
             exclude: /node_modules/,
-            query: {
-              presets: ['es2015']
-            }
+            use: [
+              {
+                loader: 'babel-loader',
+                options: {
+                  presets: [
+                    ['env', { modules: false }]
+                  ]
+                }
+              }
+            ]
           }
         ]
       }
     },
-    
 
     logLevel: config.LOG_WARN
   });

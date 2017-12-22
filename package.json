@@ -5,7 +5,8 @@
   "main": "lib/extract-json-from-string.js",
   "scripts": {
     "test": "gulp",
-    "travis": "grunt ci",
+    "cover": "nyc --reporter=html --reporter=lcov --reporter=text-summary mocha --timeout=3000 --reporter=dot test/**/*.js",
+    "travis": "gulp ci",
     "codeclimate": "codeclimate-test-reporter < coverage/lcov-report/index.html"
   },
   "repository": {
@@ -39,6 +40,7 @@
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
+    "babel-preset-env": "^1.6.1",
     "babel-preset-es2015": "^6.24.1",
     "eslint-codeframe-formatter": "^1.0.2",
     "file-manifest": "^2.0.4",
@@ -50,8 +52,6 @@
     "gulp-mocha": "^4.3.1",
     "gulp-open": "^2.0.0",
     "gulp-rename": "^1.2.2",
-    "gulp-sequence": "^0.4.6",
-    "gulp-spawn-mocha": "^4.0.1",
     "gulp-uglify": "^3.0.0",
     "karma": "^2.0.0",
     "karma-chrome-launcher": "^2.2.0",
@@ -61,6 +61,7 @@
     "karma-phantomjs-launcher": "^1.0.4",
     "karma-webpack": "^2.0.9",
     "mocha": "^4.0.1",
+    "nyc": "^11.4.1",
     "rimraf": "^2.6.2",
     "should": "^13.1.3",
     "webpack": "^3.10.0"

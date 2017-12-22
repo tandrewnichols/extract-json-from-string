@@ -1,7 +1,7 @@
 engines:
   eslint:
     enabled: true
-    channel: "eslint-2"
+    channel: "eslint-3"
     config:
       config: '.eslint.json'
   duplication:
@@ -9,10 +9,8 @@ engines:
     config:
       languages:
         - javascript
-ratings:
-   paths:
-    - "lib/**.js"
-exclude_paths:
+exclude_patterns:
+  - ".*.*"
   - "dist/**.js"
   - "gulp/**.js"
   - "test/**.*"
