@@ -45,7 +45,7 @@
     "eslint-codeframe-formatter": "^1.0.2",
     "file-manifest": "^2.0.4",
     "gulp": "github:gulpjs/gulp#4.0",
-    "gulp-codeclimate-reporter": "^1.2.0",
+    "gulp-codeclimate-reporter": "github:tandrewnichols/gulp-codeclimate-reporter",
     "gulp-debug": "^3.1.0",
     "gulp-eslint": "^4.0.0",
     "gulp-istanbul": "^1.1.2",
