@@ -116,11 +116,27 @@ describe('extract-json-from-string', function() {
       })
     })
 
-    // context('with an invalid object', () => {
-    //   it('should return an empty array', () => {
-    //     let objs = extract('laskfjd laksdj fals { lkasjdf');
-    //     objs.length.should.equal(0);
-    //   })
-    // })
+    context('with an invalid object', () => {
+      it('should handle a start brace only', () => {
+        let objs = extract('laskfjd laksdj fals { lkasjdf');
+        objs.length.should.equal(0);
+      })
+
+      it('should handle a start brace and close brace that are not an object', () => {
+        let objs = extract('laskfjd laksdj fals { lkasjdf }');
+        objs.length.should.equal(0);
+      })
+
+      it('should handle a string with no braces at all', () => {
+        let objs = extract('laskfjd laksdj fals lkasjdf');
+        objs.length.should.equal(0);
+      })
+
+      it('should still return objects after invalid objects', () => {
+        let objs = extract('laskfjd laksdj fals { lkasjdf } sakjd { foo: "bar" }');
+        objs.length.should.equal(1);
+        objs[0].should.eql({ foo: 'bar' });
+      })
+    })
   })
 })
