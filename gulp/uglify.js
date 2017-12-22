@@ -1,10 +1,10 @@
-var gulp = require('gulp');
-var uglify = require('gulp-uglify');
-var rename = require('gulp-rename');
-var config = require('./config');
+const gulp = require('gulp');
+const uglify = require('gulp-uglify');
+const rename = require('gulp-rename');
+const config = require('./config');
 
-gulp.task('uglify', function() {
-  gulp.src(config.lib)
+gulp.task('uglify', () => {
+  return gulp.src(config.lib)
     .pipe(uglify())
     .pipe(rename('extract-json-from-string.min.js'))
     .pipe(gulp.dest('dist'));

@@ -1,11 +1,7 @@
-var gulp = require('gulp');
-var rimraf = require('rimraf');
+const gulp = require('gulp');
+const rimraf = require('rimraf');
 
-gulp.task('clean:coverage', function(cb) {
-  rimraf('./coverage', cb);
-});
+gulp.task('clean:coverage', done => rimraf('./coverage', done));
+gulp.task('clean:dist', done => rimraf('./dist', done));
 
-gulp.task('clean:dist', function(cb) {
-  rimraf('./dist', cb);
-});
-
+gulp.task('clean', gulp.parallel('clean:coverage', 'clean:dist'));
