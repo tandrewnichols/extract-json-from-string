@@ -17,6 +17,11 @@ module.exports = function(config) {
       'test/**/*.js'
     ],
 
+    webpackMiddleware: {
+      noInfo: true,
+      stats: 'errors-only'
+    },
+
     webpack: {
       module: {
         rules: [
