@@ -1,7 +1,7 @@
 {
   "name": "extract-json-from-string",
   "description": "Extract JSON/javascript objects from strings",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "lib/extract-json-from-string.js",
   "scripts": {
     "test": "gulp",
